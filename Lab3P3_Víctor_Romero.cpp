@@ -1,4 +1,5 @@
 #include <iostream>
+#include <array>
 using namespace std;
 
 // Ejercicio 1
@@ -95,6 +96,18 @@ void Opcion_1() {
 				cout << disco_2[i] << " ";
 			}
 			cout << "] " << endl << endl;
+		}
+			  break;
+
+		case 4: {
+			cout << "Opcion de Salida! \n";
+			for (int i = 0; i < 8; i++){
+				disco_1[i] = 0;
+			}
+
+			for (int i = 0; i < 8; i++) {
+				disco_2[i] = 0;
+			}
 		}
 			  break;
 
