@@ -118,6 +118,99 @@ void Opcion_1() {
 	} while (opcionArray != 4);
 }
 
+// Ejercicio 2
+char** Llenar_Matriz(int filas, int columnas) {
+	char** matriz = new char* [filas];
+	for (int i = 0; i < filas; i++) {
+		matriz[i] = new char[columnas];
+		for (int j = 0; j < columnas; j++) {
+			matriz[i][j] = '-';
+		}
+	}
+	return matriz;
+}
+
+int posicion_random(int n) {
+	srand(time(0));
+	return rand() % n;
+}
+
+void agregar_obstaculos(char** matriz, int obstaculos, int filas, int columnas) {
+	int obstaculos_agregados = 0;
+	while (obstaculos_agregados < obstaculos) {
+		int fila = posicion_random(filas);
+		int columna = posicion_random(columnas);
+		if (matriz[fila][columna] != '#') {
+			matriz[fila][columna] = '#';
+			obstaculos_agregados++;
+		}
+	}
+}
+
+void imprimir_matriz(char** matriz, int filas, int columnas) {
+	cout << endl;
+	for (int i = 0; i < filas; i++) {
+		for (int j = 0; j < columnas; j++) {
+			cout << "[" << matriz[i][j] << "]";
+		}
+		cout << endl;
+	}
+	cout << endl;
+}
+
+int Opcion_2() {
+	cout << "Ingrese el Numero de Filas: ";
+	int filas;
+	cin >> filas;
+	while (filas < 5) {
+		if (filas < 5) {
+			cout << "Ingrese el Numero de Mayor que 5...\n ";
+			cout << "Ingrese el Numero de Filas VALIDO: ";
+			cin >> filas;
+		}
+	}
+
+	cout << endl << "Ingrese el Numero de Columnas: ";
+	int columnas;
+	cin >> columnas;
+	while (columnas < 5) {
+		if (columnas < 5) {
+			cout << "Ingrese el Numero de Mayor que 5...\n ";
+			cout << "Ingrese el Numero de Columnas VALIDO: ";
+			cin >> columnas;
+		}
+	}
+
+	int casillas = filas * columnas;
+
+	cout << endl << "Ingrese el Numero de Obstaculos: ";
+	int obstaculos;
+	cin >> obstaculos;
+	while (obstaculos < 1 && obstaculos < casillas) {
+		if (obstaculos < 1 && obstaculos < casillas) {
+			cout << "Ingrese el Numero de Mayor que 1...\n ";
+			cout << "Ingrese el Numero de Filas VALIDO: ";
+			cin >> obstaculos;
+		}
+	}
+
+	// Crear la matriz
+	char** matriz = Llenar_Matriz(filas, columnas);
+
+	// Agregar Obstaculos
+	agregar_obstaculos(matriz, obstaculos, filas, columnas);
+	imprimir_matriz(matriz, filas, columnas);
+
+	for (int i = 0; i < filas; i++) {
+		delete[] matriz[i];
+	}
+	delete[] matriz;
+
+	return 0;
+}
+
+
+
 // Menu de Opciones
 int menu() {
 	setlocale(LC_ALL, "spanish");
@@ -148,8 +241,8 @@ int menu() {
 			  break;
 
 		case 2: {
-			cout << "- 2)  - \n";
-
+			cout << "- 2) Matriz con Obstáculos - \n";
+			Opcion_2();
 		}
 			  break;
 
