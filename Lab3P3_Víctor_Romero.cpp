@@ -2,9 +2,11 @@
 using namespace std;
 
 // Ejercicio 1
-void llenar_Array() {
+void Opcion_1() {
 	int disco_1[8];
 	int disco_2[8];
+
+	int disco_XOR[8];
 
 	int opcionArray;
 	do {
@@ -55,11 +57,26 @@ void llenar_Array() {
 				}
 			}
 
-			cout << "Los numeros ingresados del DISCO 2 son: [";
+			cout << "Los numeros ingresados del DISCO 2 son: [ ";
 			for (int i = 0; i < 8; i++) {
 				cout << disco_2[i] << " ";
 			}
 			cout << "] " << endl << endl;
+
+			for (int i = 0; i < 8; i++) {
+				if (disco_1[i] == disco_2[i]) {
+					disco_XOR[i] = 0;
+				} else {
+					disco_XOR[i] = 1;
+				}
+			}
+
+			cout << ">> Los numeros del DISCO XOR son: [ ";
+			for (int i = 0; i < 8; i++) {
+				cout << disco_XOR[i] << " ";
+			}
+			cout << "] <<" << endl << endl;
+
 		}
 			  break;
 
@@ -85,35 +102,6 @@ void llenar_Array() {
 			cout << "Valor digitado no es valido\n";
 		}
 		}
-	} while (opcionArray != 4);
-}
-
-void Opcion_1() {
-	int opcionArray;
-	do {
-		cout << "-- Menu de Arrays --\n"
-			<< "1) Guardar Datos en XOR\n"
-			<< "2) Obtener Datos del Disco 1\n"
-			<< "3) Obtener Datos del Disco 2\n"
-			<< "4) SALIR\n\n";
-
-		cout << "Ingrese el Disco a Escoger: ";
-		cin >> opcionArray;
-
-		switch (opcionArray) {
-
-		case 1: {
-			llenar_Array();
-		}
-			  break;
-
-		case 2: {
-
-		}
-			  break;
-
-		}
-
 	} while (opcionArray != 4);
 }
 
@@ -164,6 +152,7 @@ int menu() {
 	return opcion;
 }
 
+// Ejercicio 2
 
 int main()
 {
